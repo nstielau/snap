@@ -5,12 +5,13 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "snap"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Directory listings faster than you can say 'onomatopoeia'.}
+    gem.description = %Q{A Sinatra app to make directory listings a snap!}
     gem.email = "nick.stielau@gmail.com"
     gem.homepage = "http://github.com/nstielau/snap"
     gem.authors = ["Nick Stielau"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_runtime_dependency 'sinatra', '>= 0.9.4'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
