@@ -4,5 +4,8 @@ require 'rubygems'
 require 'sinatra'
 require 'snap'
 
-
+# Include the Snap app
 include Snap
+
+# And run!
+Sinatra::Application.run!
