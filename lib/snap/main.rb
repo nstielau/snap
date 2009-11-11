@@ -5,7 +5,18 @@ require 'erb'
 module Snap
   set :views, File.dirname(__FILE__) + '/views'
   
+  #attr :dir, true
+  
+  def get_dir
+    @dir
+  end
+  
+  def set_dir(newdir)
+    @dir = newdir
+  end
+  
   get '/' do
+    set_dir(Dir.pwd)
     erb :index
   end
   
@@ -15,9 +26,22 @@ module Snap
     send_file filename
   end
   
-  def get_dir
-    Dir.pwd
+  get '/*' do
+    relative_location = params[:splat]
+    full_location = File.join(Dir.pwd, get_dir.to_s, relative_location)
+    
+    if File.exist?(full_location)
+      if File.directory?(full_location)
+        set_dir(full_location)
+        erb :index
+      elsif File.file?(full_location)
+        mime :foo, 'text'
+        content_type :foo
+        send_file full_location, :type => :foo
+      end
+    end
   end
+  
   
   def get_files
     Dir.glob("#{get_dir}/**")
@@ -29,6 +53,10 @@ module Snap
     else
       file_path
     end
+  end
+  
+  def file_size(f)
+    File.size(f)
   end
   
   def file_mtime(f)

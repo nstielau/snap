@@ -10,11 +10,13 @@
   <h3>Listing <%= get_dir %> </h3>
   <table>
     <tr>
-      <td>File</td><td>Size</td>
+      <th>File</th>
+      <th>Size</th>
     </tr>
     <% get_files.each do |f| %>
     <tr>
-      <td><a href="<%= file_name(f) %>"><%= file_name(f) %></a></td><td><%= File.size(f) %></td><td><%= file_mtime(f) %></td>
+      <td><a href="<%= file_name(f) %>"><%= file_name(f) %></a></td>
+      <td><%= file_size(f) %> bytes</a></td>
     </tr>
     <% end %>
   </table>
