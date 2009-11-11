@@ -16,10 +16,22 @@ module Snap
   end
   
   def get_dir
-    File.dirname(__FILE__)
+    Dir.pwd
   end
   
   def get_files
     Dir.glob("#{get_dir}/**")
-  end  
+  end
+  
+  def file_name(file_path)
+    if file_path.match("/")
+      file_path.split("/").last
+    else
+      file_path
+    end
+  end
+  
+  def file_mtime(f)
+    File.mtime(f).strftime("%Y-%m-%d %I:%M")
+  end
 end
