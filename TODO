@@ -1,0 +1,16 @@
+# TODO
+#
+# Set up testing
+# Break out code into helpers/models
+# Add '..' directory to go back
+# Pretty print size
+# Add mtime back
+# Pretty up template
+# Add CSS
+# Do a 404 page
+# Line up columns/headers
+# Serve images, html, and text different (Mime Types!)
+# Add type field
+  # Add file-type icons..
+# Syntax highlight code?
+# Truncate long file names
