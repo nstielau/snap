@@ -26,23 +26,14 @@ module Snap
     ######
     # 404    
     not_found do
-      erb :404
-    end
-
-    ######
-    # Root
-    
-    #TODO: Can be combined with below?
-    get '/' do
-      set_dir(Dir.pwd)
-      erb :index
+      erb :not_found
     end
   
     ####################
     # Main splat handler
     get '/*' do
       relative_location = params[:splat]
-      full_location = File.join(Dir.pwd, get_dir.to_s, relative_location)
+      full_location = File.join(Dir.pwd, relative_location)
     
       if File.exist?(full_location)
         if File.directory?(full_location)
@@ -53,6 +44,9 @@ module Snap
           content_type :foo
           send_file full_location, :type => :foo
         end
+      else
+        #TODO: Does this work?
+        erb :not_found
       end
     end
   
