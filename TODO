@@ -1,6 +1,7 @@
 # TODO
 #
 # Break out code into helpers/models
+# BDD: Define tests
 # Test +  Mock
 # Add '..' directory to go back
 # Pretty print size

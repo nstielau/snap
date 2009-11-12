@@ -5,9 +5,8 @@ require 'erb'
 module Snap
   class Server < Sinatra::Base
     set :views, File.dirname(__FILE__) + '/views'
-  
-    #attr :dir, true
-  
+
+    # TODO: Cattr?
     def get_dir
       @dir
     end
@@ -16,17 +15,31 @@ module Snap
       @dir = newdir
     end
   
+    #############
+    # Snap Assets    
+    get '/__snap__/:file.:format' do
+      filename = File.dirname(__FILE__) + "/assets/#{params[:file]}.#{params[:format]}"
+      content_type params[:format]
+      send_file filename
+    end  
+  
+    ######
+    # 404    
+    not_found do
+      erb :404
+    end
+
+    ######
+    # Root
+    
+    #TODO: Can be combined with below?
     get '/' do
       set_dir(Dir.pwd)
       erb :index
     end
   
-    get '/__snap__/:image.:format' do
-      filename = File.dirname(__FILE__) + "/images/#{params[:image]}.#{params[:format]}"
-      content_type params[:format]
-      send_file filename
-    end
-  
+    ####################
+    # Main splat handler
     get '/*' do
       relative_location = params[:splat]
       full_location = File.join(Dir.pwd, get_dir.to_s, relative_location)

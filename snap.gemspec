@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Nick Stielau"]
-  s.date = %q{2009-11-09}
+  s.date = %q{2009-11-10}
   s.default_executable = %q{snap}
   s.description = %q{A Sinatra app to make directory listings a snap!}
   s.email = %q{nick.stielau@gmail.com}
@@ -25,7 +25,10 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bin/snap",
      "lib/snap.rb",
+     "lib/snap/main.rb",
+     "snap.gemspec",
      "test/helper.rb",
      "test/test_snap.rb"
   ]
