@@ -11,6 +11,8 @@ begin
     gem.homepage = "http://github.com/nstielau/snap"
     gem.authors = ["Nick Stielau"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_development_dependency "mocha", ">= 0.9.8"
+    gem.add_development_dependency "rack-test", ">= 0.5.1"
     gem.add_runtime_dependency 'sinatra', '>= 0.9.4'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
