@@ -6,6 +6,9 @@ module Snap
   class Server < Sinatra::Base
     set :views, File.dirname(__FILE__) + '/views'
 
+    #require 'logger'
+    #use Rack::CommonLogger, Logger.new("/tmp/foo.log")
+
     # TODO: Cattr?
     def get_dir
       @dir
