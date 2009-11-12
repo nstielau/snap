@@ -1,7 +1,7 @@
 # TODO
 #
-# Set up testing
 # Break out code into helpers/models
+# Test +  Mock
 # Add '..' directory to go back
 # Pretty print size
 # Add mtime back
@@ -11,8 +11,9 @@
 # Line up columns/headers
 # Serve images, html, and text different (Mime Types!)
 # Add type field
-  # Add file-type icons..
+  # Add file-type icons.. from Apache? http://127.0.0.1:1234/icons/
 # Syntax highlight code?
 # Truncate long file names
 # Add gh-pages branch
   # Make submodule or whatever
+# Add opts parse to bin/snap, ala http://github.com/sinatra/sinatra/blob/master/lib/sinatra/main.rb
