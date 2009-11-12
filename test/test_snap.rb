@@ -14,9 +14,9 @@ class MyAppTest < Test::Unit::TestCase
    Snap::Server
  end
 
- def test_my_default
+ def test_title
    get '/'
-   assert_equal 'Hello World!', last_response.body
+   assert last_response.body.match(/.<title>Snap! \/.*<\/title>/)
  end
 end
 
