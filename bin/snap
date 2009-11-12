@@ -8,4 +8,5 @@ require 'snap'
 include Snap
 
 # And run!
-Sinatra::Application.run!
+#Sinatra::Application.run!
+Snap::Server.run!
