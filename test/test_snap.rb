@@ -1,7 +1,22 @@
 require 'helper'
+require 'snap'
+require 'rubygems'
+require 'rack/test'
 
-class TestSnap < Test::Unit::TestCase
-  should "probably rename this file and start testing for real" do
-    flunk "hey buddy, you should probably rename this file and start testing for real"
-  end
+class TestApp
+  include Snap
 end
+
+class MyAppTest < Test::Unit::TestCase
+ include Rack::Test::Methods
+
+ def app
+   Snap::Server
+ end
+
+ def test_my_default
+   get '/'
+   assert_equal 'Hello World!', last_response.body
+ end
+end
+
