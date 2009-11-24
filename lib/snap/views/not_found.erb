@@ -3,10 +3,15 @@
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>Snap! <%= get_dir %></title>
+  <title>Snap! <%= get_current_dir %></title>
 </head>
 <body>
-  <img src='/__snap__/snap.jpg'/>
-  <h3>404izzle</h3>
+  <img src='/__snap__/snap.jpg'/ style="position:absolute;">
+  <div align="center">
+    <div>
+      <h3>404izzle</h3>
+      Go back to <a href="/"><%= get_root_dir %></a>.
+    </div>
+  </div>
 </body>
 </html>

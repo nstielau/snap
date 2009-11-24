@@ -8,13 +8,21 @@ module Snap
 
     #require 'logger'
     #use Rack::CommonLogger, Logger.new("/tmp/foo.log")
+    def self.run!(options={})
+      @@root_dir = options[:root] || Dir.pwd
+      super.run! if super.respond_to?("run!")
+    end
 
-    # TODO: Cattr?
-    def get_dir
+    def get_root_dir
+      @@root_dir
+    end
+    
+    # TODO: Cattr?    
+    def get_current_dir
       @dir
     end
   
-    def set_dir(newdir)
+    def set_current_dir(newdir)
       @dir = newdir
     end
   
@@ -36,11 +44,11 @@ module Snap
     # Main splat handler
     get '/*' do
       relative_location = params[:splat]
-      full_location = File.join(Dir.pwd, relative_location)
+      full_location = File.join(get_root_dir, relative_location)
     
       if File.exist?(full_location)
         if File.directory?(full_location)
-          set_dir(full_location)
+          set_current_dir(full_location)
           erb :index
         elsif File.file?(full_location)
           mime :foo, 'text'
@@ -54,24 +62,22 @@ module Snap
     end
   
   
-    def get_files
-      Dir.glob("#{get_dir}/**")
+    def get_snap_files
+      Dir.glob("#{get_current_dir}/**").map{|f| SnapFile.new(f)}
     end
-  
-    def file_name(file_path)
-      if file_path.match("/")
-        file_path.split("/").last
-      else
-        file_path
-      end
-    end
-  
-    def file_size(f)
-      File.size(f)
-    end
-  
-    def file_mtime(f)
-      File.mtime(f).strftime("%Y-%m-%d %I:%M")
-    end
+    
+    # def breadcrumberize_path
+    #   relative_path = get_current_dir.sub(get_root_dir, "")
+    #   puts "Relative path is #{relative_path}"
+    #   relative_parts = relative_path.split("/")
+    #   relative_parts.pop
+    #   puts "relative_parts are #{relative_parts.inspect}"
+    #   b_root = get_current_dir
+    #   relative_parts.each do |p|
+    #     b_root = b_root.sub(p, "<a href=\"/#{p}\">#{p}</a>")
+    #     puts "Bboot is now #{b_root}"
+    #   end
+    #   b_root
+    # end
   end
 end

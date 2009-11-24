@@ -1,11 +1,8 @@
 # TODO
 #
-# Break out code into helpers/models
-# BDD: Define tests
-# Test +  Mock
+
 # Add '..' directory to go back
 # Pretty print size
-# Add mtime back
 # Pretty up template
 # Add CSS
 # Do a 404 page
@@ -18,3 +15,10 @@
 # Add gh-pages branch
   # Make submodule or whatever
 # Add opts parse to bin/snap, ala http://github.com/sinatra/sinatra/blob/master/lib/sinatra/main.rb
+
+# Canonicalize trailing '/' with redirect
+# BDD: Define tests
+# Test +  Mock + Shoulda
+# Breadcumberize path
+# Deal with symlinks
+# Deal with files with spaces for 'type'

@@ -4,5 +4,18 @@ require 'rubygems'
 require 'sinatra'
 require 'snap'
 
+require 'optparse'
+
+options = {}
+if ARGV.any?
+  OptionParser.new { |op|
+    op.banner = "Usage: snap [options]"
+    op.on('-e env') { |val| options[:environment] = val.to_sym }
+    op.on('-s server') { |val| options[:server] = val }
+    op.on('-p port') { |val| options[:port] = val.to_i }
+    op.on('-r root') { |val| options[:root] = val }
+  }.parse!(ARGV.dup)
+end
+
 # run!
-Snap::Server.run!
+Snap::Server.run!(options)
