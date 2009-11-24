@@ -1,27 +1,31 @@
 module Snap
   class SnapFile
     def initialize(file_name)
-      @file_name = file_name.sub("//", "/")
+      @path = file_name.sub("//", "/")
     end
   
     def name
-      if @file_name && @file_name.match("/")
-        @file_name.split("/").last
+      if @path && @path.match("/")
+        @path.split("/").last
       else
-        @file_name
+        @path
       end
     end
     
+    def path
+      @path
+    end
+    
     def relative_to(dir)
-      rel = @file_name.sub(dir, "")
+      rel = @path.sub(dir, "")
     end
 
     def size
-      File.size(@file_name)
+      File.size(@path)
     end
 
     def mtime
-      mtime = File.mtime(@file_name)
+      mtime = File.mtime(@path)
       if (mtime.to_i > Time.now.to_i - 24*60*60)
         mtime.strftime("%I:%M:%S %p")
       else
@@ -30,7 +34,8 @@ module Snap
     end
     
     def type
-      type = `file #{@file_name}`.strip.sub(/\S+\s+/, "")
+      escaped_path = @path.gsub(" ", "\\ ")
+      type = `file #{escaped_path}`.strip.sub(/.*:\s*/, "")
       type = "text" if type.match("text")
       type
     end

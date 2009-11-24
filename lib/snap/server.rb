@@ -7,14 +7,15 @@ module Snap
     set :views, File.dirname(__FILE__) + '/views'
 
     #require 'logger'
-    #use Rack::CommonLogger, Logger.new("/tmp/foo.log")
+    #use Rack::CommonLogger, Logger.new(STDOUT)
+    
     def self.run!(options={})
-      @@root_dir = options[:root] || Dir.pwd
+      @@root_dir = options[:root]
       super.run! if super.respond_to?("run!")
     end
 
     def get_root_dir
-      @@root_dir
+      @@root_dir ||= Dir.pwd
     end
     
     # TODO: Cattr?    
@@ -37,6 +38,7 @@ module Snap
     ######
     # 404    
     not_found do
+      status 404
       erb :not_found
     end
   
@@ -56,8 +58,7 @@ module Snap
           send_file full_location, :type => :foo
         end
       else
-        #TODO: Does this work?
-        erb :not_found
+        raise Sinatra::NotFound
       end
     end
   
