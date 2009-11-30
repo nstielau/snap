@@ -4,28 +4,31 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Snap! <%= get_current_dir %></title>
+  <link rel="stylesheet" type="text/css" href="/__snap__/styles.css" media="screen, print" />
 </head>
 <body>
-  <img src='/__snap__/snap.jpg'/ style="position:absolute;">
+  <img src='/__snap__/snap.jpg' style="position:absolute;">
   <div align="center">
-    <div>
-      <h3>Listing <%= get_current_dir %> </h3>
-      <table>
-        <tr>
-          <th>File</th>
-          <th>Last Modified</th>
-          <th>Size</th>
-          <th>Type</th>
-        </tr>
-        <% get_snap_files.each do |f| %>
-        <tr>
-          <td><a href="<%= f.relative_to(get_root_dir) %>"><%= f.name %></a></td>
-          <td><%= f.mtime %></td>
-          <td><%= f.size %> bytes</a></td>
-          <td><%= f.type %></td>
-        </tr>
-        <% end %>
-      </table>
+    <div id="wrapper">
+      <div id="content">
+        <h3>Listing <%= get_current_dir %> </h3>
+        <table>
+          <tr>
+            <th>File</th>
+            <th>Last Modified</th>
+            <th>Size</th>
+            <th>Type</th>
+          </tr>
+          <% get_snap_files.each do |f| %>
+          <tr>
+            <td><a href="<%= f.relative_to(get_root_dir) %>"><%= f.name %></a></td>
+            <td><%= f.mtime %></td>
+            <td><%= f.size %> bytes</a></td>
+            <td><%= f.type %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
     </div>
   </div>
 </body>
