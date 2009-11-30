@@ -50,15 +50,17 @@ module Snap
     get '/*' do
       relative_location = params[:splat]
       full_location = File.join(get_root_dir, relative_location)
-    
       if File.exist?(full_location)
         if File.directory?(full_location)
           set_current_dir(full_location)
           erb :index
         elsif File.file?(full_location)
-          mime :foo, 'text'
-          content_type :foo
-          send_file full_location, :type => :foo
+          if params[:format] && params[:format].to_sym == :code
+            @full_location = full_location
+            erb :code
+          else
+            send_file full_location, :type => params[:format] || File.extname(full_location)
+          end
         end
       else
         raise Sinatra::NotFound

@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Snap! <%=get_current_dir %></title>
+  <link rel="stylesheet" type="text/css" href="/__snap__/styles.css" media="screen, print" />
+</head>
+<body>
+  <div>
+        <h3>Looking at <%= @full_location %></h3>
+<pre>
+<%= File.read(@full_location) %>
+</pre>
+  </div>
+</body>
+</html>

@@ -25,6 +25,7 @@ module Snap
     end
 
     def mtime
+      return if File.symlink?(@path)
       mtime = File.mtime(@path)
       if (mtime.to_i > Time.now.to_i - 24*60*60)
         mtime.strftime("%I:%M:%S %p")

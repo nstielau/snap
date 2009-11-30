@@ -1,6 +1,6 @@
 = snap
 
-Description goes here.
+Directory listings faster than you can say 'onomatopoeia'.
 
 == Note on Patches/Pull Requests
  
