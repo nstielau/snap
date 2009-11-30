@@ -36,8 +36,17 @@ module Snap
     def type
       escaped_path = @path.gsub(" ", "\\ ")
       type = `file #{escaped_path}`.strip.sub(/.*:\s*/, "")
-      type = "text" if type.match("text")
-      type
+      type = "text"       if type.match("text")
+      type = "jpeg"       if type.match("JPEG image data")
+      type = "png"        if type.match("PNG image")
+      type = "executable" if type.match("executable")
+      type[0..11]
+    end
+    
+    # TODO: Get this HTML outta here
+    def icon
+      return "<img src=\"/__snap__/icons/dir.png\"/>" if directory?
+      return "<img src=\"/__snap__/icons/text.png\"/>"
     end
     
     def directory?

@@ -3,22 +3,20 @@
 
 # Add '..' directory to go back
 # Pretty print size
-# Pretty up template
-# Add CSS
-# Do a 404 page
+# Pretty up template, w CSS
 # Line up columns/headers
 # Serve images, html, and text different (Mime Types!)
 # Add type field
-  # Add file-type icons.. from Apache? http://127.0.0.1:1234/icons/
+# Move icon code from snap_file into helper
 # Syntax highlight code?
 # Truncate long file names
 # Add gh-pages branch
   # Make submodule or whatever
-# Add opts parse to bin/snap, ala http://github.com/sinatra/sinatra/blob/master/lib/sinatra/main.rb
-
 # Canonicalize trailing '/' with redirect
 # BDD: Define tests
 # Test +  Mock + Shoulda
 # Breadcumberize path
 # Deal with symlinks
 # Deal with files with spaces for 'type'
+# Favicon
+# SnapFileType class

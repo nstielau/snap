@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'sinatra'
 require 'erb'
+require 'digest/md5'
 
 module Snap
   class Server < Sinatra::Base
@@ -8,6 +9,7 @@ module Snap
 
     #require 'logger'
     #use Rack::CommonLogger, Logger.new(STDOUT)
+    # Add Rack::Cache
     
     def self.run!(options={})
       @@root_dir = options[:root]
@@ -29,8 +31,9 @@ module Snap
   
     #############
     # Snap Assets    
-    get '/__snap__/:file.:format' do
-      filename = File.dirname(__FILE__) + "/assets/#{params[:file]}.#{params[:format]}"
+    get '/__snap__*/:file.:format' do
+      filename = File.dirname(__FILE__) + "/assets#{params[:splat]}/#{params[:file]}.#{params[:format]}"
+      headers({"Cache-Control" => "max-age=3600, public"})
       content_type params[:format]
       send_file filename
     end  
@@ -64,7 +67,13 @@ module Snap
   
   
     def get_snap_files
-      Dir.glob("#{get_current_dir}/**").map{|f| SnapFile.new(f)}
+      files = Dir.glob("#{get_current_dir}/**").map{|f| SnapFile.new(f)}
+      files.insert(0,SnapFile.new(File.join(get_current_dir, '..'))) unless at_root?      
+      files
+    end
+    
+    def at_root?
+      File.expand_path(get_current_dir) == File.expand_path(get_root_dir)
     end
     
     # def breadcrumberize_path
