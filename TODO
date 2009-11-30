@@ -2,17 +2,12 @@
 ## TODO ##
 ##########
 
-# Add '..' directory to go back
 # Pretty print size
 # Pretty up template, w CSS
 # Line up columns/headers
-# Serve images, html, and text different (Mime Types!)
-# Add type field
 # Move icon code from snap_file into helper
 # Syntax highlight code?
 # Truncate long file names
-# Add gh-pages branch
-  # Make submodule or whatever
 # Canonicalize trailing '/' with redirect
 # BDD: Define tests
 # Test +  Mock + Shoulda
@@ -21,3 +16,4 @@
 # Deal with files with spaces for 'type'
 # Favicon
 # SnapFileType class
+# Have raw and code links
