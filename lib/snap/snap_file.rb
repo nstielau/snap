@@ -47,7 +47,12 @@ module Snap
     # TODO: Get this HTML outta here
     def icon
       return "<img src=\"/__snap__/icons/dir.png\"/>" if directory?
+      return "<img src=\"/__snap__/icons/image.png\"/>" if image?
       return "<img src=\"/__snap__/icons/text.png\"/>"
+    end
+    
+    def image?
+      type.match("png") || type.match("jpeg")
     end
     
     def directory?
