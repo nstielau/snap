@@ -8,7 +8,7 @@ begin
     gem.summary = %Q{Directory listings faster than you can say 'onomatopoeia'.}
     gem.description = %Q{A Sinatra app to make directory listings a snap!}
     gem.email = "nick.stielau@gmail.com"
-    gem.homepage = "http://github.com/nstielau/snap"
+    gem.homepage = "http://nstielau.github.com/snap"
     gem.authors = ["Nick Stielau"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
     gem.add_development_dependency "mocha", ">= 0.9.8"
