@@ -2,16 +2,35 @@
 
 Directory listings faster than you can say 'onomatopoeia'.
 
-== Note on Patches/Pull Requests
- 
-* Fork the project.
-* Make your feature addition or bug fix.
-* Add tests for it. This is important so I don't break it in a
-  future version unintentionally.
-* Commit, do not mess with rakefile, version, or history.
-  (if you want to have your own version, that is fine but
-   bump version in a commit by itself I can ignore when I pull)
-* Send me a pull request. Bonus points for topic branches.
+Snap helps you quickly browse through directories and examine files in your browser.
+
+Install the gem with:
+
+  $: sudo gem install snap  
+  
+Run Snap, chrooted to the current directory
+View at: http://localhost:4567
+
+  $: snap
+  
+Run Snap, chrooted to your home directory  
+View at: http://localhost:4567
+
+  $: snap -r ~
+  
+Run Snap with a different port
+View at: http://localhost:3000  
+
+  $: snap -p 3000
+  
+View other Snap options:
+
+  $: snap -h
+  Usage: snap [options]
+      -e env
+      -s server
+      -p port
+      -r root
 
 == Copyright
 
