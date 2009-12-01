@@ -30,7 +30,7 @@ module Snap
     end
   
     #############
-    # Snap Assets    
+    # Snap Assets        
     get '/__snap__*/:file.:format' do
       filename = File.dirname(__FILE__) + "/assets#{params[:splat]}/#{params[:file]}.#{params[:format]}"
       headers({"Cache-Control" => "max-age=3600, public"})
