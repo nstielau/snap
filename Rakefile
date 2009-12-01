@@ -6,12 +6,10 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "snap"
     gem.summary = %Q{Directory listings faster than you can say 'onomatopoeia'.}
-    gem.description = %Q{A Sinatra app to make directory listings a snap!}
+    gem.description = %Q{A ultility to make HTML directory listings a snap!}
     gem.email = "nick.stielau@gmail.com"
     gem.homepage = "http://nstielau.github.com/snap"
     gem.authors = ["Nick Stielau"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    gem.add_development_dependency "mocha", ">= 0.9.8"
     gem.add_development_dependency "rack-test", ">= 0.5.1"
     gem.add_runtime_dependency 'sinatra', '>= 0.9.4'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
