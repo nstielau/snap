@@ -28,4 +28,14 @@ class SnapAppTest < Test::Unit::TestCase
     assert(last_response.body.match("404"))
   end
   
+  # TODO: These bonk with a 'stream closed' error
+  # def test_file
+  #   get "/Rakefile"
+  # end
+  # 
+  # def test_snap_asset
+  #   get '/__snap__/styles.css'
+  #   assert_equal(last_response.status, 200)
+  #   assert last_response.body.match("body"), "Body doesn't contain #{string}:\n#{last_response.body}"
+  # end
 end
