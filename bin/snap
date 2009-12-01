@@ -14,7 +14,13 @@ if ARGV.any?
     op.on('-s server') { |val| options[:server] = val }
     op.on('-p port') { |val| options[:port] = val.to_i }
     op.on('-r root') { |val| options[:root] = val }
+    op.on('-o') { |val| options[:open] = true }
   }.parse!(ARGV.dup)
+end
+
+if options[:open]
+  # TODO: How can I get default port from sinatra?
+ `open "http://127.0.0.1:#{options[:port] || 4567}"`
 end
 
 # run!
