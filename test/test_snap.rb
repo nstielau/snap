@@ -1,8 +1,8 @@
 #require 'helper'
 require 'snap'
-require 'rubygems'
 require 'rack/test'
 require 'test/unit'
+require 'mocha'
 
 class SnapAppTest < Test::Unit::TestCase
   include Rack::Test::Methods

@@ -30,7 +30,7 @@ module Snap
       if (mtime.to_i > Time.now.to_i - 24*60*60)
         mtime.strftime("%I:%M:%S %p")
       else
-        mtime.strftime("%Y-%m-%d")      
+        mtime.strftime("%d-%m-%Y")      
       end
     end
     
