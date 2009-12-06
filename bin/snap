@@ -20,7 +20,7 @@ end
 
 if options[:open]
   # TODO: How can I get default port from sinatra?
- `open "http://127.0.0.1:#{options[:port] || 4567}"`
+ sleep 3; `open "http://127.0.0.1:#{options[:port] || 4567}"`
 end
 
 # run!
