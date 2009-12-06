@@ -35,13 +35,17 @@ module Snap
     end
     
     def type
-      escaped_path = @path.gsub(" ", "\\ ")
-      type = `file #{escaped_path}`.strip.sub(/.*:\s*/, "")
-      type = "text"       if type.match("text")
-      type = "jpeg"       if type.match("JPEG image data")
-      type = "png"        if type.match("PNG image")
-      type = "executable" if type.match("executable")
-      type[0..11]
+      type = Rack::Mime::MIME_TYPES[File.extname(path)]
+           
+      if type.nil? 
+        escaped_path = @path.gsub(" ", "\\ ")
+        type = `file #{escaped_path}`.strip.sub(/.*:\s*/, "")
+        type = "text/plain"       if type.match("text")
+        type = "image/jpeg"       if type.match("JPEG image data")
+        type = "image/png"        if type.match("PNG image")
+        type = "executable"       if type.match("executable")
+      end
+      type
     end
     
     # TODO: Get this HTML outta here
@@ -52,7 +56,7 @@ module Snap
     end
     
     def image?
-      type.match("png") || type.match("jpeg")
+      type.match("image")
     end
     
     def directory?

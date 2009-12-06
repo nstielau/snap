@@ -28,9 +28,15 @@ class SnapFileTest < Test::Unit::TestCase
     assert_equal(a.path, "/path/to/some file")
   end
   
-  def test_file_type
-    a = Snap::SnapFile.new(__FILE__)    
-    assert_equal(a.type, "text")
+  def test_file_type_with_extension
+    {
+      :rb => "ruby",
+      :txt => "text",
+      :jpg => "image"
+    }.each_pair do |ext, value|    
+      a = Snap::SnapFile.new("/file.#{ext}")    
+      assert(a.type.match(value), "A file with extension '#{ext}' should have a type that matches #{value}.")
+    end
   end
   
   def test_file_type_with_space
@@ -72,13 +78,25 @@ class SnapFileTest < Test::Unit::TestCase
   
   def test_image_helper
     a = Snap::SnapFile.new("/path")
-    %w(jpeg png).each do |t|
+    %w(image/jpeg image/png).each do |t|
       a.stubs(:type).returns(t)    
+      assert(a.image?, "File of type '#{t}' should be marked as an image.")
+    end
+    
+    %w(text/plain directory).each do |t|
+      a.stubs(:type).returns(t)    
+      assert(!a.image?, "File should not be marked as an image.")
+    end
+  end
+  
+  def test_image_helper_by_extension
+    %w(jpeg jpg png gif).each do |ext|
+      a = Snap::SnapFile.new("/path.#{ext}")
       assert(a.image?, "File should be marked as an image.")
     end
     
-    %w(text directory).each do |t|
-      a.stubs(:type).returns(t)    
+    %w(.txt .html).each do |ext|
+      a = Snap::SnapFile.new("/path.#{ext}")
       assert(!a.image?, "File should not be marked as an image.")
     end
   end
