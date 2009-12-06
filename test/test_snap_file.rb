@@ -12,6 +12,11 @@ class SnapFileTest < Test::Unit::TestCase
     a = Snap::SnapFile.new('/path/to/some file')
     assert_equal(a.name, "some file")
   end
+
+  def test_file_name_no_slash
+    a = Snap::SnapFile.new('some_file')
+    assert_equal(a.path, "some_file")
+  end  
   
   def test_file_path
     a = Snap::SnapFile.new('/path/to/some_file')
