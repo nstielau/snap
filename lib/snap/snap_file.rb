@@ -40,9 +40,6 @@ module Snap
       if type.nil? 
         escaped_path = @path.gsub(" ", "\\ ")
         type = `file #{escaped_path}`.strip.sub(/.*:\s*/, "")
-        type = "text/plain"       if type.match("text")
-        type = "image/jpeg"       if type.match("JPEG image data")
-        type = "image/png"        if type.match("PNG image")
         type = "executable"       if type.match("executable")
       end
       type
