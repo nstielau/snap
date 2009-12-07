@@ -10,8 +10,11 @@ div#wrapper {
 div#content {
   width: 600px;
   background-color: #ccc;
+  background-image: url(/__snap__/mtns.png);
+  background-repeat: repeat-y;
+  background-postiion: left;
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
-  border: 2px solid #777;
+  border: 2px solid #000000;
   padding: 10px;
 }
