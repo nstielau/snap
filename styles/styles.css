@@ -1,0 +1,46 @@
+body {
+ background-color: #eee;
+}
+
+div#wrapper {
+ width: 800px;
+ padding: 10px;  
+}
+
+div#content {
+  background-color: #ccc;
+  background-image: url(/__snap__/mtns.png);
+  background-repeat: repeat-y;
+  background-postiion: left;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border: 2px solid #000000;
+  padding: 10px;
+  padding-left: 45px;
+}
+
+pre { 
+  background: #000; 
+  color: #fff; 
+  padding: 15px;
+  border: 1px solid #ee765d;
+}
+
+
+#container {
+  margin: 0 auto;
+  width: 700px;
+}
+
+h1 { font-size: 3.8em; color: #000000; margin-bottom: 3px; }
+h1 .small { font-size: 0.4em; }
+h1 a { text-decoration: none }
+h2 { font-size: 1.5em; color: #000000; }
+h3 { text-align: center; color: #000000; }
+a { color: #ee765d; }
+
+.description { font-size: 1.2em; margin-bottom: 30px; margin-top: 30px; font-style: italic;}
+.download { float: right; }
+
+hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+.footer { text-align:center; padding-top:30px; font-style: italic; }
