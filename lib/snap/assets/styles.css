@@ -4,7 +4,7 @@ body {
 
 div#wrapper {
  width: 800px;
- padding: 20px;  
+ padding: 20px 65px 20px 0px;  
 }
 
 div#content {
