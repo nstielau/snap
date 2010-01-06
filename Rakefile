@@ -12,6 +12,7 @@ begin
     gem.authors = ["Nick Stielau"]
     gem.add_development_dependency "rack-test", ">= 0.5.1"
     gem.add_runtime_dependency 'sinatra', '>= 0.9.4'
+    gem.add_runtime_dependency 'launchy', '>= 0.3.5'
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new

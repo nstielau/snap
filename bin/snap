@@ -2,6 +2,7 @@
 
 require 'snap'
 require 'optparse'
+require 'launchy'
 
 options = {}
 if ARGV.any?
@@ -16,7 +17,7 @@ if ARGV.any?
 end
 
 if options[:open]
- `open "http://127.0.0.1:#{options[:port] || 4567}"`
+ Launchy.open("http://127.0.0.1:#{options[:port] || 4567}")
 end
 
 # run!
