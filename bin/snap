@@ -9,12 +9,12 @@ options = {}
 if ARGV.any?
   OptionParser.new { |op|
     op.banner = "Usage: snap [options]"
-    op.on('-e env') { |val| options[:environment] = val.to_sym }
-    op.on('-s server') { |val| options[:server] = val }
-    op.on('-p port') { |val| options[:port] = val.to_i }
-    op.on('-r root') { |val| options[:root] = val }
-    op.on('-n') { |val| options[:do_not_open] = true }
-    op.on('-c') { |val| options[:cold] = true }
+    op.on('-e env', 'Specify the server environment on which to run') { |val| options[:environment] = val.to_sym }
+    op.on('-s server', 'Specify the address to bind to') { |val| options[:server] = val }
+    op.on('-p port', 'Specify the port on which to run') { |val| options[:port] = val.to_i }
+    op.on('-r root', 'Specify the root of the directory listing') { |val| options[:root] = val }
+    op.on('-n', 'Do not open browser') { |val| options[:do_not_open] = true }
+    op.on('-c', 'Cold snap') { |val| options[:cold] = true }
   }.parse!(ARGV.dup)
 end
 
