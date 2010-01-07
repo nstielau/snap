@@ -37,5 +37,5 @@ if fork
   Snap::Server.run!(options)
 else
   sleep 0.5 # let the server start up
-  Launchy.open("http://127.0.0.1:#{options[:port] || 4567}") unless options[:do_not_open]
+  Launchy.open("http://127.0.0.1:#{options[:port]}") unless options[:do_not_open]
 end
