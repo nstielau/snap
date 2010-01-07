@@ -30,7 +30,30 @@ unless options[:port]
   end
 end
 
-puts "Brrr, it's a cold snap" if options[:cold]
+if options[:cold]
+  cold_snap = <<COLDSNAP
+            /~~~~~~\          _______________________
+          /'    -s- ~~~~\____/ Brr, it's a cold snap |
+          /'dHHb     ~~~/    \_______________________/
+        /'dHHHA     :
+       /' VHHHHaadHHb:
+      /'   `VHHHHHHHHb:
+     /'      `VHHHHHHH:
+    /'        dHHHHHHH:
+    |        dHHHHHHHH:
+    |       dHHHHHHHH:
+    |       VHHHHHHHHH:
+    |   b    HHHHHHHHV:
+    |   Hb   HHHHHHHV'
+    |   HH  dHHHHHHV'
+    |   VHbdHHHHHHV'
+    |    VHHHHHHHV'
+     \    VHHHHHHH:
+      \oodboooooodH
+  HHHHHHHHHHHHHHHHHHHHHHHHGGN94
+COLDSNAP
+  puts cold_snap
+end
 
 # run!
 if fork
