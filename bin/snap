@@ -3,6 +3,7 @@
 require 'snap'
 require 'optparse'
 require 'launchy'
+require 'socket'
 
 options = {}
 if ARGV.any?
@@ -12,13 +13,29 @@ if ARGV.any?
     op.on('-s server') { |val| options[:server] = val }
     op.on('-p port') { |val| options[:port] = val.to_i }
     op.on('-r root') { |val| options[:root] = val }
-    op.on('-o') { |val| options[:open] = true }
+    op.on('-n') { |val| options[:do_not_open] = true }
+    op.on('-c') { |val| options[:cold] = true }
   }.parse!(ARGV.dup)
 end
 
-if options[:open]
- Launchy.open("http://127.0.0.1:#{options[:port] || 4567}")
+# if a port isn't specified, find the first open one between 4567 and 49151
+unless options[:port]
+  options[:port] = 4567
+  begin
+    TCPServer.new('0.0.0.0', options[:port]).close
+  rescue Errno::EADDRINUSE
+    raise "Cannot find an open port on [4567, 49151]" if options[:port] == 49151
+    options[:port] += 1
+    retry
+  end
 end
 
+puts "Brrr, it's a cold snap" if options[:cold]
+
 # run!
-Snap::Server.run!(options)
+if fork
+  Snap::Server.run!(options)
+else
+  sleep 0.5 # let the server start up
+  Launchy.open("http://127.0.0.1:#{options[:port] || 4567}") unless options[:do_not_open]
+end
