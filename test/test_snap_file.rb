@@ -69,7 +69,7 @@ class SnapFileTest < Test::Unit::TestCase
   
   def test_mtime_within_24_hours
     a = Snap::SnapFile.new("/path")
-    0.upto(23).each do |h|
+    (0..23).each do |h|
       File.stubs(:mtime).with(a.path).returns(Time.now - h*60*60)    
       assert(a.mtime.match(/\d\d:\d\d:\d\d??/), "Mtime is #{a.mtime}, which isn't a time.")
     end
